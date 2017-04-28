@@ -1,0 +1,11 @@
+.espacio-arriba{
+	margin-top: 25px;
+}
+
+.quitar-float{
+	float: none;
+}
+
+.negrilla{
+	font-weight: bold;
+}
