@@ -1,11 +1,53 @@
 .espacio-arriba{
 	margin-top: 25px;
 }
-
+.espacio-derecha {
+	margin-right: 1em;
+}
 .quitar-float{
 	float: none;
 }
-
 .negrilla{
 	font-weight: bold;
+}
+.retraso-animate-1{
+	-webkit-animation-delay:1s;
+	-moz-animation-delay:1s;
+	animation-delay: 1s;
+}
+.retraso-animate-2{
+	-webkit-animation-delay:2s;
+	-moz-animation-delay:2s;
+	animation-delay: 2s;
+}
+.pacifico{
+	font-family: 'Pacifico', cursive;
+}
+.font-open-sans{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 19px;
+}
+.color-font-green{
+	color: #00887C;
+}
+.font-mediana{
+	font-size: 1.5em;
+}
+.nav-gris{
+	background-color: #eee;
+}
+.padding-largo{
+	padding: 5px 10px;
+}
+.no-lista {
+	margin: 0px;
+	padding: 0px;
+}
+.button {
+	margin-top: 150px;
+    margin-right: 645px;
+}
+.imgstyle {
+	margin-top: -89px;
+    margin-left: 1325px;
 }
