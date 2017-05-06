@@ -47,23 +47,22 @@
 			$generoFinal = "Señor ";
 		}
 
-
 		switch ($credito) {
 			case 1:
-				$interes = 1.69;
+				$interes = 1.69/100;
 				break;
 			
 			case 2:
-				$interes = 1.50;
+				$interes = 1.50/100;
 				break;
 			case 3:
-				$interes = 1.50;
+				$interes = 1.50/100;
 				break;
 			case 4:
-				$interes = 1.8;
+				$interes = 1.8/100;
 				break;
 			case 5:
-				$interes = $otroPorcentaje;
+				$interes = $otroPorcentaje/100;
 				break;
 		}
 
@@ -85,11 +84,12 @@
 						break;
 				}
 
-		$cuota = $valor*$interes*1+$interes+$plazo / 1+$interes*$plazo-1;
+
+		$cuota = $valor*(($interes*(1+$interes)**$plazo)/(((1+$interes)**$plazo)-1)); 
 
 		$salarioFinal = $salario * 0.30;
 
-		$interesAnual = $cuota*$interes*$plazo;
+		$interesAnual = $interes*$plazo*$valor;
 
 		$totalPagar = $interesAnual + $valor;
 
@@ -100,7 +100,7 @@
 		}
 
 		echo "<br><br><h2 class='espacio-arriba font-open-sans text-center font-mediana'>" .
-			$generoFinal . $nombre . " identificado con el número de indentificación " . $cedula . " Le comunicamos que segun su ingreso mensual $" . $salario . " Su credito fue " .
+			$generoFinal . $nombre . " identificado con el número de indentificación " . $cedula . " Le comunicamos que segun su ingreso mensual $" . number_format($salario,2) . " Su credito fue " .
 			$estadoCredito;
 
 			if($estadoCredito == "Rechazado"){
@@ -108,15 +108,45 @@
 				"supera el 30 % permitido por deducción" ."</h2>";
 			}else{
 				echo " y su resumen del crédito queda de la siguiente manera: <br><br>".
-				"Detalle Credito: <br><br>" .
-				"Monto: $" . $valor . "<br>" .
+				"<b>Detalle Credito: </b><br><br>" .
+				"Monto: $" . number_format($valor,2) . "<br>" .
 				"Duración Crédito: " . $plazoAnnos . "<br>" .
-				"Intereses Anuales: $" . $interesAnual . "<br>".
+				"Intereses Anuales: $" . number_format($interesAnual,2) . "<br>".
 				"Periodo de pago: " . $plazo ." meses <br>".
-				"Cuota Mensual: $" . $cuota . "<br>" .
-				"Total Pagar: $" . $totalPagar . "<br>" .
+				"Cuota Mensual: $" . number_format($cuota,2) . "<br>" .
+				"Total Pagar: $" . number_format($totalPagar,2) . "<br>" .
 				"Cantidad Cuotas: " .$plazo . "<br>";
 			}
+		echo "<hr>";
+
+		echo "<table class='table table-condensed'>";
+		echo "<thead>";
+        echo "<tr>";
+			echo "<td><strong>Cuota</strong></td>";
+			echo "<td class='text-center'><strong>Valor cuota</strong></td>";
+			echo "<td class='text-center'><strong>Abono capital</strong></td>";
+			echo "<td class='text-center'><strong>Intereses</strong></td>";
+			echo "<td class='text-center'><strong>Saldo</strong></td>";
+        echo "</tr>";
+		echo "</thead>";
+		echo "<tbody>";
+
+		for ($i=1;$i<=$plazo;$i++){
+			echo "<tr>";
+				$intereses=$valor*$interes;
+				$abonoCapital=$cuota-$intereses;
+				$saldo=$valor-$abonoCapital;
+				$valor=$saldo;
+				echo "<td>".$i."</td>";
+				echo "<td class='text-center'>$".number_format($cuota,2)."</td>";
+				echo "<td class='text-center'>$".number_format($abonoCapital,2)."</td>";
+				echo "<td class='text-center'>$".number_format($intereses,2)."</td>";
+				echo "<td class='text-center'>$".number_format($saldo,2)."</td>";
+			echo "</tr>";
+		}
+		
+		echo "</tbody>";
+	echo "</table>";
 
 	?>
 

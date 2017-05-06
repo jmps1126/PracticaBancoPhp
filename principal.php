@@ -31,31 +31,31 @@
 
 				<div class="form-group pacifico">
 					<label class="control-label">Nombre Completo</label>
-					<input type="text" class="form-control"  name="nombre">
+					<input type="text" class="form-control"  name="nombre" required="true">
 
 				</div>
 
 				<div class="form-group pacifico">
 					<label>Cédula Ciudadania</label>
-					<input type="number" class="form-control" name="cedula">
+					<input type="number" class="form-control" name="cedula" required="true">
 				</div>
 
 				<div class="form-group pacifico">
 					<label>Teléfono</label>
-					<input type="number" class="form-control" name="telefono">
+					<input type="number" class="form-control" name="telefono" required="true">
 				</div>
 
 				<div class="form-group pacifico">
 					<label>Genero</label>
 					<div class="radio">
-				   		<label class="radio-inline"><input type="radio" name="genero" value="1">Femenino</label>
+				   		<label class="radio-inline"><input type="radio" name="genero" value="1" checked="">Femenino</label>
 						<label class="radio-inline"><input type="radio" name="genero" value="2">Masculino</label>
 				    </div>
 				</div>
 
 				<div class="form-group pacifico">
 					<label>Salario</label>
-					<input type="number" class="form-control" name="salario">
+					<input type="number" class="form-control" name="salario" required="true">
 				</div>
 
 			</div>
@@ -79,12 +79,12 @@
 
 				<div class="form-group pacifico">
 					<label>Valor solicitado</label>
-					<input type="number" class="form-control" name="valor">
+					<input type="number" class="form-control" name="valor" required="true">
 				</div>
 
 				<div class="form-group pacifico">
 					<label>Plazo Credito</label>
-					<select class="form-control selectpicker" name="plazo">
+					<select class="form-control selectpicker" name="plazo" required="true">
 						<option value="12">1 año</option>
 						<option value="24">2 años</option>
 						<option value="36">3 años</option>
